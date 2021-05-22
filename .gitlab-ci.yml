@@ -11,7 +11,7 @@ variables:
 stages:
   - build
 
- build-aries: 
+build-aries: 
   image: ${REGISTRY_HOST}/cts/devops-cicd:latest
   stage: build
   script:
