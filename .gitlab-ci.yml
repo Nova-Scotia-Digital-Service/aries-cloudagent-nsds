@@ -5,7 +5,6 @@ variables:
   ACA_PY_VERSION: py36-1.15-1_0.6.0
   CONTAINER_BUILD_IMAGE: ${REGISTRY_HOST}/digitalplatformservices/identity/aries-cloudagent-nsds:${ACA_PY_VERSION}-${CI_COMMIT_SHORT_SHA}
   CONTAINER_PROD_IMAGE: ${REGISTRY_HOST}/digitalplatformservices/identity/aries-cloudagent-nsds:${ACA_PY_VERSION}
-  POSTGRE_PACKAGE_URL: https://git.novascotia.ca/api/v4/projects/14/packages/generic/indy-sdk-postgres/1.0.0/libindystrgpostgres.so
 
 
 stages:
