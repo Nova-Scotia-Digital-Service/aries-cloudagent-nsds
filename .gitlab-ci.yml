@@ -17,5 +17,5 @@ build-aries:
    - echo "building ${CONTAINER_IMAGE}"
    - docker build -t ${CONTAINER_IMAGE} . 
    - echo "Pushing to Container Registry ${CONTAINER_IMAGE}"
-   - docker push ${CONTAINER_BUILD_IMAGE} 
+   - docker push ${CONTAINER_IMAGE} 
 
