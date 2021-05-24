@@ -3,8 +3,7 @@ image: harbor.novascotia.ca/cts/devops-cicd:latest
 variables:
   REGISTRY_HOST: harbor.novascotia.ca
   ACA_PY_VERSION: py36-1.15-1_0.6.0
-  CONTAINER_BUILD_IMAGE: ${REGISTRY_HOST}/digitalplatformservices/identity/aries-cloudagent-nsds:${ACA_PY_VERSION}-${CI_COMMIT_SHORT_SHA}
-  CONTAINER_PROD_IMAGE: ${REGISTRY_HOST}/digitalplatformservices/identity/aries-cloudagent-nsds:${ACA_PY_VERSION}
+  CONTAINER_IMAGE: ${REGISTRY_HOST}/digitalplatformservices/identity/aries-cloudagent-nsds-${ACA_PY_VERSION}:latest
 
 
 stages:
@@ -15,11 +14,8 @@ build-aries:
   stage: build
   script:
    - echo ${REGISTRY_TOKEN} | docker login -u robot\$GitLab --password-stdin ${REGISTRY_HOST}
-   - echo "building ${CONTAINER_BUILD_IMAGE}"
-   - docker build -t ${CONTAINER_BUILD_IMAGE} . 
-   - echo "Pushing to Container Registry ${CONTAINER_BUILD_IMAGE}"
+   - echo "building ${CONTAINER_IMAGE}"
+   - docker build -t ${CONTAINER_IMAGE} . 
+   - echo "Pushing to Container Registry ${CONTAINER_IMAGE}"
    - docker push ${CONTAINER_BUILD_IMAGE} 
-   - echo "building ${CONTAINER_PROD_IMAGE}"
-   - docker build -t ${CONTAINER_PROD_IMAGE} . 
-   - docker push ${CONTAINER_PROD_IMAGE}
 
